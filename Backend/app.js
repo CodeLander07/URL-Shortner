@@ -1,6 +1,7 @@
 import express from 'express';
 import {nanoid} from 'nanoid';
-
+import dotenv from 'dotenv';
+dotenv.config("./.env");
 const app = express();
 // This both lines are used to parce the body of the request
 app.use(express.json());
@@ -10,7 +11,7 @@ app.listen(3000,()=>{
     console.log('Server is running http://localhost:3000/');
 })
 
-app.get('/api/create',(req,res)=>{
+app.post('/api/create',(req,res)=>{
     // res.send("create short URL");
     const {url} = req.body;
     console.log(url);
