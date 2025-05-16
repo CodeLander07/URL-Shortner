@@ -1,13 +1,18 @@
 import express from 'express';
 import {nanoid} from 'nanoid';
 import dotenv from 'dotenv';
-dotenv.config("./.env");
+import connectDB from './src/config/mongo.config.js';
+
+
+
+dotenv.config('./.env');
 const app = express();
 // This both lines are used to parce the body of the request
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.listen(3000,()=>{
+    connectDB();
     console.log('Server is running http://localhost:3000/');
 })
 
