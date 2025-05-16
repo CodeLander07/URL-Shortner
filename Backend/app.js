@@ -2,7 +2,7 @@ import express from 'express';
 import {nanoid} from 'nanoid';
 
 const app = express();
-
+// This both lines are used to parce the body of the request
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
