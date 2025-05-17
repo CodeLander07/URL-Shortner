@@ -23,6 +23,10 @@ app.post('/api/create',(req,res)=>{
     res.send(nanoid(10));
 })
 
+app.get('/api' ,(req ,res) =>{
+    res.send("i am api ");
+})
+
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
