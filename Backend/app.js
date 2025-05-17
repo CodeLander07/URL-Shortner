@@ -2,6 +2,7 @@ import express from 'express';
 import {nanoid} from 'nanoid';
 import dotenv from 'dotenv';
 import connectDB from './src/config/mongo.config.js';
+import short_url from './src/routes/short_url.route.js';
 
 
 
@@ -16,20 +17,26 @@ app.listen(3000,()=>{
     console.log('Server is running http://localhost:3000/');
 })
 
-app.post('/api/create',(req,res)=>{
-    // res.send("create short URL");
-    const {url} = req.body;
-    console.log(url);
-    res.send(nanoid(10));
-})
+app.use('/api/create',short_url);
 
-app.get('/api' ,(req ,res) =>{
-    res.send("i am api ");
-})
+// app.get('/:id', async (req, res) => {
+//     const { id } = req.params;
+//     const url = await urlSchema.findOne({ short_url: id});
+//     if(url){
+//         res.redirect(url.full_url);
+//     }
+//     else{
+//         res.status(404).send('URL not found');
+//     }
+// });
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+// app.get('/api' ,(req ,res) =>{
+//     res.send(nanoid(10));
+// })
+
+// app.get('/', (req, res) => {
+//     res.send('Hello World!');
+// });
 
 //GET - Redirection
 //POST - Create Short URL
