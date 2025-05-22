@@ -3,7 +3,8 @@ import {nanoid} from 'nanoid';
 import dotenv from 'dotenv';
 import connectDB from './src/config/mongo.config.js';
 import short_url from './src/routes/short_url.route.js';
-
+import { redirectFromShortUrl } from './src/controller/short_url.controller.js';
+import {errorHandler }from './src/utils/error_handler.js';
 
 
 dotenv.config('./.env');
@@ -19,25 +20,10 @@ app.listen(3000,()=>{
 
 app.use('/api/create',short_url);
 
-// app.get('/:id', async (req, res) => {
-//     const { id } = req.params;
-//     const url = await urlSchema.findOne({ short_url: id});
-//     if(url){
-//         res.redirect(url.full_url);
-//     }
-//     else{
-//         res.status(404).send('URL not found');
-//     }
-// });
+app.get('/:id', redirectFromShortUrl);
 
-// app.get('/api' ,(req ,res) =>{
-//     res.send(nanoid(10));
-// })
 
-// app.get('/', (req, res) => {
-//     res.send('Hello World!');
-// });
-
+app.use(errorHandler);
 //GET - Redirection
 //POST - Create Short URL
 
