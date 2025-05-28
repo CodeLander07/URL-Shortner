@@ -20,8 +20,7 @@ app.listen(3000,()=>{
 
 app.use('/api/create',short_url);
 
-app.get('/:id', redirectFromShortUrl);
-
+app.get('/:id',redirectFromShortUrl);
 
 app.use(errorHandler);
 //GET - Redirection
