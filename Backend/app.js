@@ -1,4 +1,4 @@
-import express from "express";
+import express, { response } from "express";
 import {nanoid} from "nanoid"
 import dotenv from "dotenv"
 import connectDB from "./src/config/monogo.config.js"
@@ -39,3 +39,6 @@ app.listen(3000,()=>{
 })
 
 // GET - Redirection 
+app.get('/',(req,res)=>{
+    res.send("Hello From The Root")
+})
